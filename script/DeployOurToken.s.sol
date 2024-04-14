@@ -5,12 +5,14 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {OurToken} from "../src/OurToken.sol";
 import {Script} from "forge-std/Script.sol";
 
-contract DeployOutToken is Script {
+contract DeployOurToken is Script {
     uint256 public constant INITAL_SUPPLY = 1000 ether;
 
-    function run() external {
+    function run() external returns (OurToken) {
         vm.startBroadcast();
-        new OurToken(INITAL_SUPPLY);
+        OurToken ourToken = new OurToken(INITAL_SUPPLY);
         vm.stopBroadcast();
+
+        return ourToken;
     }
 }

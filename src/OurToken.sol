@@ -7,4 +7,12 @@ contract OurToken is ERC20 {
     constructor(uint256 initialSupply) ERC20("OutToken", "OT") {
         _mint(msg.sender, initialSupply);
     }
+
+    function mint(address receiver, uint256 amount) external {
+        _mint(receiver, amount);
+    }
+
+    function burn(address account, uint256 amount) external {
+        _burn(account, amount);
+    }
 }
